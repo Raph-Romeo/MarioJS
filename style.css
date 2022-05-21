@@ -1,0 +1,32 @@
+*{margin:0;position:absolute;image-rendering:pixelated}
+body{background:#9494FF;overflow:hidden;height:100vh;width:100vw}
+
+/* MARIO STYLING */
+
+div[name="element"]{height:64px;width:64px;}
+#player{background:url("textures/player/normal.png");background-size:64px}
+
+/* BACKGROUND STYLING */
+
+.background{z-index:-1;width:calc(768px*4);height:calc(176px*4);background:url(textures/background/overworld.png);background-size:calc(768px*4) calc(176px*4)}
+
+/* OBJECT STYLING */
+
+.ground{background:url(textures/objects/ground.png);background-size:64px;}
+.groundcave{background:url(textures/objects/ug/ground.png);background-size:64px;}
+
+.pipe{background:url(textures/objects/pipe.png);background-size:128px;}
+.goomba{background:url(textures/entity/goomba.png);background-size:64px;}
+.block{background:url(textures/objects/block.png);background-size:64px;}
+.blockcave{background:url(textures/objects/ug/block.png);background-size:64px;}
+
+.hpipe{background:url(textures/objects/hpipe.png);background-size:64px;}
+.lpipe{background:url(textures/objects/lpipe.png);background-size:192px 128px;}
+
+.mblock{background:url(textures/objects/mblock.png);background-size:64px;}
+.qblock{background:url(textures/objects/qblock.gif);background-size:64px;}
+
+.pole{background:url(textures/objects/pole.png);background-size:64px;z-index:-1;}
+.flag{background:url(textures/objects/flag.png);background-size:64px;z-index:-1;}
+
+.castle{background:url(textures/objects/castle/castle.png);background-size:320px;z-index:-1;}
