@@ -69,6 +69,8 @@ function collision(a){
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
 				var player = document.getElementById("player");
+
+				//CHECK FOR SPECIAL COLLISIONS
 				if ((a.id == "player" && b.classList.contains("goomba")) || (b.id == "player" && a.classList.contains("goomba"))){
 					if (player.hp>1){
 						player.hp = player.hp - 1;
@@ -77,6 +79,16 @@ function collision(a){
 						player.isDead = true;
 					}
 				}
+				if (a.id == "player" && b.classList.contains('pole_collision')){
+					b.remove();
+					player.time = 0;
+					player.grounded = 1;
+					player.endstage = true;
+					player.velocityX = 0;
+					new Audio('sfx/flagpole.wav').play();
+				}
+
+
 				if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
 					a.y = b.y + b.h;
 					a.velocityY = 0;

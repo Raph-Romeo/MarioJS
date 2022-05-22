@@ -5,14 +5,23 @@ function load(level){
 	body.innerHTML = '<div name="element" id="player"></div>'
 	player.animation = 0;
 	window.scrollTo(0,0)
+
 	if (level == "debug"){
+
 		const player = document.getElementById("player");
-		player.x = 128
-		player.y = window.innerHeight - 128 - 64
-		
-		setObject("ground",0,window.innerHeight - 128,69 * 64,128)
-		level_length = 69 * 64;
+		player.x = 128;
+		player.y = window.innerHeight - 128 - 64;
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
+		document.body.style.background = "black";
+
+		setObject("groundcave",0,window.innerHeight - 128,52 * 64,128);
+		setObject("mblock",15*64,window.innerHeight - 192,64,64);
+		setObject("flag",15*64,window.innerHeight - 128 - 11*64);
+		setObject("pole",15*64,window.innerHeight - 128 - 12*64);
+
+		level_length = 52 * 64;
 	}
+
 
 //LEVEL 1-1-------------------------------------------
 
@@ -200,7 +209,7 @@ function setObject(name,x,y,w=0,h=0) {
 		body.innerHTML += '<div style="transform:translate(' + (x - 32) + 'px,' + (window.innerHeight - 128 - 10*64) + 'px);width:64px;height:64px;position:absolute;" class="flag static"></div>';
 	}
 	if (name == "pole"){
-		body.innerHTML += '<div style="transform:translate(' + (x + 28) + 'px,' + y + 'px);width:8px;height:calc(12 * 64px);position:absolute;" class="static" name="element"></div>';
+		body.innerHTML += '<div style="transform:translate(' + (x + 28) + 'px,' + y + 'px);width:8px;height:calc(12 * 64px);position:absolute;" class="static pole_collision" name="element"></div>';
 	}
 	if (name == "castle"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:calc(5*64px);height:calc(5*64px)" class="static castle"></div>';

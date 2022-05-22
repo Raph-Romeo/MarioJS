@@ -13,3 +13,28 @@ function ground(a){
 			return;
 	}
 }
+
+function endstage(){
+	player.time = player.time + 1;
+	if (player.time < 100){
+		player.velocityY = 5;
+		player.velocityX = 0;
+		document.getElementsByClassName("flag")[0].transform = "translateY(" + document.getElementsByClassName("flag")[0].getBoundingClientRect().y + "px)";
+		player.y = player.y + player.velocityY;
+		update(player);
+		collision(player);
+	}
+	else if (player.time == 100){
+		player.direction = 0;
+		player.x = player.x + 72;
+		update(player);
+	}
+	else if (player.time == 120){
+		new Audio('sfx/clear.wav').play();
+		player.direction = 1;
+	}
+	else if (player.time > 120){
+		player.velocityX = 2;
+		physics();
+	}
+}

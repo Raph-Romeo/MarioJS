@@ -7,6 +7,7 @@ function animations(){
 
 function player_animation(){
 	var player = document.getElementById("player");
+	if (player.endstage != true){
 	if ((!player.grounded && player.velocityX > 0) || ((!player.grounded && player.velocityX == 0)) && player.direction == 1){
 		player.animation = 5;
 	}
@@ -32,9 +33,32 @@ function player_animation(){
 		else{ 
 			player.animation = 0;
 			if (player.direction == 0){
-				player.animation = player.animation + 14
-
+				player.animation = player.animation + 14;
 			}
+		}
+	}
+	}
+	else{
+		if (player.velocityX == 0){
+			player.animation = 7;
+		}
+		else if (player.velocityX != 0){
+			if (player.animation >= 4 || player.animation < 1){
+				player.animation = 1;
+			}
+			player.animation = player.animation + 0.02 * pos(player.velocityX);
+			if (player.direction == 0){
+				player.animation = player.animation + 14;
+			}
+			if (player.direction == 1 && player.velocityX < -0.5){
+				player.animation = 4;
+			}
+			if (player.direction == 0 && player.velocityX > 0.5){
+				player.animation = 18;
+			}
+		}
+		if (player.direction == 0){
+			player.animation = player.animation + 14;
 		}
 	}
 	player.style.backgroundPositionY = - (parseInt(player.animation) * 64) + "px";
