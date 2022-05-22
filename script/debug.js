@@ -19,7 +19,7 @@ function endstage(){
 	if (player.time < 100){
 		player.velocityY = 5;
 		player.velocityX = 0;
-		document.getElementsByClassName("flag")[0].transform = "translateY(" + document.getElementsByClassName("flag")[0].getBoundingClientRect().y + "px)";
+		document.getElementsByClassName("flag")[0].style.transform = "translate(" + (document.getElementsByClassName("flag")[0].getBoundingClientRect().x - document.body.getBoundingClientRect().x) + "px," + (document.getElementsByClassName("flag")[0].getBoundingClientRect().y + 5.12) + "px)";
 		player.y = player.y + player.velocityY;
 		update(player);
 		collision(player);

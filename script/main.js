@@ -2,7 +2,7 @@ window.addEventListener("load", function(){
 
 	setup();
 	main();
-        load("debug");
+        load("1-1");
 
 });
 
