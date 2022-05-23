@@ -137,6 +137,7 @@ function load(level){
 		setObject("pole",198*64,window.innerHeight - 128 - 12*64);
 
 		setObject("castle",202*64,window.innerHeight - 128 - 64*5);
+		setObject("mblock",206*64,window.innerHeight - 192,64,64);
 
 		level_length = 211 * 64;
 

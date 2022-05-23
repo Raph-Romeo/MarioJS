@@ -16,7 +16,7 @@ function player_animation(){
 	}
 	else{
 		if (player.velocityX != 0){
-			if (player.animation >= 4 || player.animation < 1){
+			if (player.animation + 0.02 * pos(player.velocityX) >= 4 || player.animation < 1){
 				player.animation = 1;
 			}
 			player.animation = player.animation + 0.02 * pos(player.velocityX);
@@ -39,11 +39,14 @@ function player_animation(){
 	}
 	}
 	else{
-		if (player.velocityX == 0){
-			player.animation = 7;
+		if (player.velocityX == 0 && player.velocityY > 1){
+			if (parseInt(player.animation + 0.05) > 8 || parseInt(player.animation) < 7){
+				player.animation = 7;
+			}
+			player.animation = player.animation + 0.05;
 		}
 		else if (player.velocityX != 0){
-			if (player.animation >= 4 || player.animation < 1){
+			if (player.animation + 0.02 * pos(player.velocityX) >= 4 || player.animation < 1){
 				player.animation = 1;
 			}
 			player.animation = player.animation + 0.02 * pos(player.velocityX);
