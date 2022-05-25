@@ -8,42 +8,42 @@ function animations(){
 function player_animation(){
 	var player = document.getElementById("player");
 	if (player.endstage != true){
-	if ((!player.grounded && player.velocityX > 0) || ((!player.grounded && player.velocityX == 0)) && player.direction == 1){
-		player.animation = 5;
-	}
-	else if ((!player.grounded && player.velocityX < 0) || ((!player.grounded && player.velocityX == 0)) && player.direction == 0){
-		player.animation = 19;
-	}
-	else{
-		if (player.velocityX != 0){
-			if (player.animation + 0.02 * pos(player.velocityX) >= 4 || player.animation < 1){
-				player.animation = 1;
+		if ((!player.grounded && player.velocityX > 0) || ((!player.grounded && player.velocityX == 0)) && player.direction == 1){
+			player.animation = 5;
+		}
+		else if ((!player.grounded && player.velocityX < 0) || ((!player.grounded && player.velocityX == 0)) && player.direction == 0){
+			player.animation = 19;
+		}
+		else{
+			if (player.velocityX != 0){
+				if (player.animation + 0.02 * pos(player.velocityX) >= 4 || player.animation < 1){
+					player.animation = 1;
+				}
+				player.animation = player.animation + 0.02 * pos(player.velocityX);
+				if (player.direction == 0){
+					player.animation = player.animation + 14;
+				}
+				if (player.direction == 1 && player.velocityX < -0.5){
+					player.animation = 4;
+				}
+				if (player.direction == 0 && player.velocityX > 0.5){
+					player.animation = 18;
+				}
 			}
-			player.animation = player.animation + 0.02 * pos(player.velocityX);
-			if (player.direction == 0){
-				player.animation = player.animation + 14;
-			}
-			if (player.direction == 1 && player.velocityX < -0.5){
-				player.animation = 4;
-			}
-			if (player.direction == 0 && player.velocityX > 0.5){
-				player.animation = 18;
+			else{ 
+				player.animation = 0;
+				if (player.direction == 0){
+					player.animation = player.animation + 14;
+				}
 			}
 		}
-		else{ 
-			player.animation = 0;
-			if (player.direction == 0){
-				player.animation = player.animation + 14;
-			}
-		}
-	}
 	}
 	else{
 		if (player.velocityX == 0 && player.velocityY > 1){
-			if (parseInt(player.animation + 0.05) > 8 || parseInt(player.animation) < 7){
+			if (parseInt(player.animation + 0.1) > 8 || parseInt(player.animation) < 7){
 				player.animation = 7;
 			}
-			player.animation = player.animation + 0.05;
+			player.animation = player.animation + 0.1;
 		}
 		else if (player.velocityX == 0){
 			player.animation = 7;
@@ -77,19 +77,30 @@ function goomba_animation(){
 	var goombas = document.getElementsByClassName("goomba");
 	for (var i=0;i<goombas.length;++i){
 		var elem = goombas[i];
-		if (elem.isDead == false){
-			elem.animation = elem.animation + 0.05;
-			if (elem.animation >= 2){
-				elem.animation = 0;
+		if (( - elem.x < document.body.getBoundingClientRect().x + 64) && (- elem.x > - window.innerWidth + document.body.getBoundingClientRect().x)){
+			if (elem.isDead == false && elem.hh != true){
+				elem.animation = elem.animation + 0.05;
+				if (elem.animation >= 2){
+					elem.animation = 0;
+				}
+				elem.style.backgroundPositionY = (parseInt(elem.animation) * -64) + "px";
 			}
-			elem.style.backgroundPositionY = (parseInt(elem.animation) * -64) + "px";
-		}
-		else{
-			elem.animation = elem.animation + 1;
-			elem.style.backgroundPositionY = 64 + "px";
-			if (elem.animation == 15){
-				elem.style.display = "none"
-				elem.y = -64
+			else if (elem.hh != true){
+				elem.animation = elem.animation + 1;
+				elem.style.backgroundPositionY = 64 + "px";
+				if (elem.animation == 15){
+					elem.style.display = "none";
+					elem.remove();
+				}
+			}
+			if (elem.hh == true){
+				elem.y = elem.y + elem.velocityY;
+				elem.x = elem.x + elem.velocityX;
+				elem.velocityY = elem.velocityY + 1;
+				elem.style.transform = "translate(" + elem.x + "px," + elem.y + "px) rotate(180deg)";
+				if (elem.y > window.innerHeight){
+					elem.remove();
+				}
 			}
 		}
 	}

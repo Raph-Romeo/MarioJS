@@ -8,7 +8,7 @@ function pos(num){
 }
 
 function death(){
-	player = document.getElementById("player")
+	var player = document.getElementById("player")
 	if (player.animation >= 0){
 		player.animation = 0;
 		player.style.zIndex = 1000;

@@ -46,3 +46,20 @@ function endstage(){
 		load("1-1")
 	}
 }
+
+
+function stomp(elem){
+	elem.velocityX = 0;
+	new Audio('sfx/stomp.wav').play();
+	elem.isDead = true;
+	elem.animation = 0;
+	elem.setAttribute("name","");
+}
+
+
+function kick(elem){
+	elem.velocityY = -10;
+	elem.setAttribute("name","");
+	elem.hh = true;
+	new Audio('sfx/kick.wav').play();
+}

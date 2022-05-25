@@ -50,11 +50,6 @@ function collision(a){
 			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
 				a.y= b.y - a.h;
 				a.grounded = 1;
-				if (b.hit == true){
-					a.isDead = true;
-					a.velocityX = 0;
-					a.animation = 0;
-				}
 				if (!b.passengers.includes(a) && a.isPassenger == 0 && !b.static){
 					b.passengers.push(a);
 					a.isPassenger = 1;
@@ -63,20 +58,22 @@ function collision(a){
 					a.velocityY = (- 2*a.velocityY)/4;
 					a.grounded = 0;
 					if (b.isDead == false){
-						b.velocityX = 0;
-						new Audio('sfx/stomp.wav').play();
-						b.isDead = true;
-						b.animation = 0;
+						stomp(b)
 					}
 				}
 				else{
 					a.velocityY = 0;
 				}
+				if (b.hit == true){
+					if (a.id != "player"){
+						kick(a);
+					}
+				}
 				update(a);
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
 
-				//CHECK FOR SPECIAL COLLISIONS
+				//CHECK FOR SPECIAL COLLISIONS_____________________________
 				if ((a.id == "player" && b.classList.contains("goomba")) || (b.id == "player" && a.classList.contains("goomba"))){
 					var player = document.getElementById("player");
 					if (player.hp>1){
@@ -95,6 +92,7 @@ function collision(a){
 					a.velocityX = 0;
 					new Audio('sfx/flagpole.wav').play();
 				}
+				//END SPECIAL COLLISIONS_____________________________
 
 
 				if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
