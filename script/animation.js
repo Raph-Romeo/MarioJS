@@ -45,6 +45,9 @@ function player_animation(){
 			}
 			player.animation = player.animation + 0.05;
 		}
+		else if (player.velocityX == 0){
+			player.animation = 7;
+		}
 		else if (player.velocityX != 0){
 			if (player.animation + 0.02 * pos(player.velocityX) >= 4 || player.animation < 1){
 				player.animation = 1;
