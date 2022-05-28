@@ -1,5 +1,5 @@
 var level_length = 0
-function load(level){
+function load(level,pipe=0){
 	const body = document.body;
 	body.style.transform = ""
 	body.innerHTML = '<div name="element" id="player"></div>'
@@ -28,12 +28,38 @@ function load(level){
 	if (level == "1-1"){
 
 		const player = document.getElementById("player");
-		player.x = 128;
-		player.y = window.innerHeight - 128 - 64;
+		if (pipe == 0){
+			player.x = 128;
+			player.y = window.innerHeight - 128 - 64;
+		}
+		if (pipe == 1){
+			player.x = 163.5 * 64;
+			player.y = window.innerHeight - 128 - 192;
+		}
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
 		document.body.style.background = "#9494FF";
 
 		setObject("ground",0,window.innerHeight - 128,69 * 64,128);
+		setObject("mblock",134*64,window.innerHeight - 192,64,64);
+		setObject("mblock",135*64,window.innerHeight - 256,64,128);
+		setObject("mblock",136*64,window.innerHeight - 320,64,192);
+		setObject("mblock",137*64,window.innerHeight - 384,64,256);
+
+		setObject("mblock",140*64,window.innerHeight - 384,64,256);
+		setObject("mblock",141*64,window.innerHeight - 320,64,192);
+		setObject("mblock",142*64,window.innerHeight - 256,64,128);
+		setObject("mblock",143*64,window.innerHeight - 192,64,64);
+
+		setObject("mblock",148*64,window.innerHeight - 192,64,64);
+		setObject("mblock",149*64,window.innerHeight - 256,64,128);
+		setObject("mblock",150*64,window.innerHeight - 320,64,192);
+		setObject("mblock",151*64,window.innerHeight - 384,64,256);
+		setObject("mblock",152*64,window.innerHeight - 384,64,256);
+
+		setObject("mblock",155*64,window.innerHeight - 384,64,256);
+		setObject("mblock",156*64,window.innerHeight - 320,64,192);
+		setObject("mblock",157*64,window.innerHeight - 256,64,128);
+		setObject("mblock",158*64,window.innerHeight - 192,64,64);
 		setObject("ground",71 * 64,window.innerHeight - 128,15 * 64,128);
                 setObject("ground",89 * 64,window.innerHeight - 128,64 * 64,128);
                 setObject("ground",155 * 64,window.innerHeight - 128,56 * 64,128);
@@ -90,26 +116,7 @@ function load(level){
 		setObject("block",129*64,window.innerHeight - 384);
 		setObject("block",130*64,window.innerHeight - 384);
 
-		setObject("mblock",134*64,window.innerHeight - 192,64,64);
-		setObject("mblock",135*64,window.innerHeight - 256,64,128);
-		setObject("mblock",136*64,window.innerHeight - 320,64,192);
-		setObject("mblock",137*64,window.innerHeight - 384,64,256);
 
-		setObject("mblock",140*64,window.innerHeight - 384,64,256);
-		setObject("mblock",141*64,window.innerHeight - 320,64,192);
-		setObject("mblock",142*64,window.innerHeight - 256,64,128);
-		setObject("mblock",143*64,window.innerHeight - 192,64,64);
-
-		setObject("mblock",148*64,window.innerHeight - 192,64,64);
-		setObject("mblock",149*64,window.innerHeight - 256,64,128);
-		setObject("mblock",150*64,window.innerHeight - 320,64,192);
-		setObject("mblock",151*64,window.innerHeight - 384,64,256);
-		setObject("mblock",152*64,window.innerHeight - 384,64,256);
-
-		setObject("mblock",155*64,window.innerHeight - 384,64,256);
-		setObject("mblock",156*64,window.innerHeight - 320,64,192);
-		setObject("mblock",157*64,window.innerHeight - 256,64,128);
-		setObject("mblock",158*64,window.innerHeight - 192,64,64);
 
 		setObject("pipe",163*64,window.innerHeight - 256,128,128);
 		setObject("pipe",179*64,window.innerHeight - 256,128,128);
