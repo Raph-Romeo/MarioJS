@@ -26,6 +26,7 @@ div[name="element"]{height:64px;width:64px;}
 
 .mblock{background:url(textures/objects/mblock.png);background-size:64px;}
 .qblock{background:url(textures/objects/qblock.gif);background-size:64px;}
+.qblockcave{background:url(textures/objects/ug/qblock.gif);background-size:64px;}
 
 .pole{background:url(textures/objects/pole.png);background-size:64px;z-index:-1;}
 .flag{background:url(textures/objects/flag.png);background-size:64px;z-index:-1;}

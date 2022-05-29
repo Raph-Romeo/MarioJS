@@ -131,6 +131,9 @@ function block_animation(){
 		block = blocks[i];
 		if (block.hit == true && block.animation != -1){
 			block.style.background = "url(textures/objects/hblock.png)";
+			if (block.classList.contains("qblockcave")){
+				block.style.background = "url(textures/objects/ug/hblock.png)";
+			}
 			block.style.backgroundSize = "64px";
 			++block.animation;
 			if (block.animation <= 8){

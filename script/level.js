@@ -14,12 +14,11 @@ function load(level,pipe=0){
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
 		document.body.style.background = "black";
 
-		setObject("groundcave",0,window.innerHeight - 128,52 * 64,128);
-		setObject("mblock",15*64,window.innerHeight - 192,64,64);
-		setObject("flag",15*64,window.innerHeight - 128 - 11*64);
-		setObject("pole",15*64,window.innerHeight - 128 - 12*64);
-
-		level_length = 52 * 64;
+		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
+		for (var i = 0;i<200;++i){
+			setObject("goomba",(i+7)*64,window.innerHeight - 128 - 64);
+		}
+		level_length = 300 * 64;
 	}
 
 
@@ -168,6 +167,43 @@ function load(level,pipe=0){
 	}
 
 //LEVEL 1-2-------------------------------------------
+
+	if (level == "1-2a"){
+		const player = document.getElementById("player");
+		if (pipe == 0){
+			player.x = 128;
+			player.y = window.innerHeight - 128 - 64;
+		}
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
+		document.body.style.background = "#9494FF";
+		setObject("background",0,window.innerHeight - 176*4 - 128,16 * 64);
+		setObject("castle1",0,window.innerHeight - 128 - 64*5);
+		setObject("pipe",12*64,window.innerHeight - 384,128,256);
+		setObject("lpipe",10*64,window.innerHeight - 128 - 2*64,3*64,2*64);
+		setObject("ground",0,window.innerHeight - 128,16 * 64,128);
+		level_length = 16 * 64;
+	}
+
+	if (level == "1-2"){
+
+		const player = document.getElementById("player");
+		player.x = 96;
+		player.y = window.innerHeight - 128 - 11 * 64;
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
+		document.body.style.background = "black";
+
+		setObject("qblockcave",10*64,window.innerHeight - 384);
+		setObject("qblockcave",11*64,window.innerHeight - 384);
+		setObject("qblockcave",12*64,window.innerHeight - 384);
+		setObject("qblockcave",13*64,window.innerHeight - 384);
+		setObject("qblockcave",14*64,window.innerHeight - 384);
+
+		setObject("groundcave",0,window.innerHeight - 128,192 * 64,128);
+		setObject("blockcave",0*64,window.innerHeight - 128 - 11*64,64,11*64);
+		setObject("blockcave",6*64,window.innerHeight - 128 - 11*64,7*64,1*64);
+		level_length = 192 * 64;
+	}
+
 //LEVEL 1-3-------------------------------------------
 //LEVEL 1-4-------------------------------------------
 
@@ -193,6 +229,9 @@ function setObject(name,x,y,w=0,h=0) {
 	}
 	if (name == "qblock"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px" class="static qblock" name="element"></div>';
+	}
+	if (name == "qblockcave"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px" class="static qblock qblockcave" name="element"></div>';
 	}
 	if (name == "pipe"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="pipe static" name="element"></div>';
@@ -222,5 +261,8 @@ function setObject(name,x,y,w=0,h=0) {
 	if (name == "castle"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:calc(5*64px);height:calc(5*64px)" class="static castle"></div>';
 		body.innerHTML += '<div style="transform:translate(' + (x + 192) + 'px,' + y + 'px);width:calc(2*64px);height:calc(5*64px);z-index:10;background-position-x:right" class="static castle"></div>';
+	}
+	if (name == "castle1"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:calc(5*64px);height:calc(5*64px)" class="static castle"></div>';
 	}
 }
