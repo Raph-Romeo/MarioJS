@@ -16,13 +16,14 @@ function load(level,pipe=0){
 
 		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
 		for (var i = 0;i<100;++i){
-			setObject("goomba",(i+8)*128,window.innerHeight - 128 - i*64);
+			setObject("goomba",(i+8)*128,window.innerHeight - 128 - i*256);
 		}
 		for (var i = 0;i<100;++i){
 			setObject("goomba",(i+8)*128,window.innerHeight - 128 - 64);
 		}
-		body.innerHTML += '<h1 style="color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI EST TROP FORT.</h1>';
+		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI EST TROP FORT. EH OUI, CELA EST VRAI. Il a reussit a battre ce niveau impossible, donc je le felicite pour son Talent.</h1>';
 		level_length = 300 * 64;
+		godmode();
 	}
 
 

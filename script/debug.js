@@ -14,6 +14,10 @@ function ground(a){
 	}
 }
 
+function godmode(){
+	player.isDead = false;
+setTimeout(godmode, 10)}
+
 function endstage(){
 	player.time = player.time + 1;
 	if (player.time < 100){
