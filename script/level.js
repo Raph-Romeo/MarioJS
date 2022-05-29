@@ -15,9 +15,13 @@ function load(level,pipe=0){
 		document.body.style.background = "black";
 
 		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
-		for (var i = 0;i<200;++i){
-			setObject("goomba",(i+7)*64,window.innerHeight - 128 - 64);
+		for (var i = 0;i<100;++i){
+			setObject("goomba",(i+8)*128,window.innerHeight - 128 - i*64);
 		}
+		for (var i = 0;i<100;++i){
+			setObject("goomba",(i+8)*128,window.innerHeight - 128 - 64);
+		}
+		body.innerHTML += '<h1 style="color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI EST TROP FORT.</h1>';
 		level_length = 300 * 64;
 	}
 
