@@ -23,7 +23,7 @@ div[name="element"]{height:64px;width:64px;}
 .blockcave{background:url(textures/objects/ug/block.png);background-size:64px;}
 
 .hpipe{background:url(textures/objects/hpipe.png);background-size:64px;}
-.lpipe{background:url(textures/objects/lpipe.png);background-size:192px 128px;}
+.lpipe{background:url(textures/objects/Lpipe.png);background-size:192px 128px;}
 
 .mblock{background:url(textures/objects/mblock.png);background-size:64px;}
 .qblock{background:url(textures/objects/qblock.gif);background-size:64px;}
