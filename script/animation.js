@@ -124,7 +124,7 @@ function koopa_animation(){
 						elem.animation = 0;
 					}
 					if (elem.animation < 2){
-						elem.animation = 2
+						elem.animation = 2;
 					}
 				}
 				elem.style.backgroundPositionY = (parseInt(elem.animation) * -96) + "px";
@@ -133,7 +133,7 @@ function koopa_animation(){
 				elem.animation = elem.animation + 1;
 				if (elem.animation == 1){
 					elem.y = elem.y + 40;
-					elem.h = 54;
+					elem.h = 56;
 					elem.style.height = "64px";
 					elem.style.backgroundPosition = "-64px 0px";
 					elem.velocityX = 0;
@@ -142,19 +142,19 @@ function koopa_animation(){
 				}
 				if (elem.rolling == true){
 					if (elem.animation > 256){
-						elem.y = elem.y;
-						elem.h = 54;
+						elem.y = elem.y + 4;
+						elem.h = 56;
 						elem.style.height = "64px";
 						elem.style.backgroundPosition = "-64px 0px";
 						elem.shelled = true;
 						update(elem);
 					}
-					elem.animation = 2
+					elem.animation = 2;
 				}
 				if (elem.animation == 256){
 					elem.style.backgroundPosition = "-64px -64px";
 					elem.y = elem.y - 4;
-					elem.h = 58;
+					elem.h = 60;
 					elem.style.height = "64px";
 					update(elem);
 				}
@@ -209,7 +209,7 @@ function block_animation(){
 	blocks = document.getElementsByClassName("qblock");
 	for (var i=0;i<blocks.length;++i){
 		block = blocks[i];
-		if (block.hit == true && block.animation != -1){
+		if (block.hit == true){
 			block.style.background = "url(textures/objects/hblock.png)";
 			if (block.classList.contains("qblockcave")){
 				block.style.background = "url(textures/objects/ug/hblock.png)";

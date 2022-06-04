@@ -44,6 +44,7 @@ function physics(){
 }
 
 function collision(a){
+	var ny = a.y
 	a.grounded = 0;
 	a.isPassenger = 0;
 	for (var i=0;i<elements.length; ++i){
@@ -54,7 +55,8 @@ function collision(a){
 
 		if (b.static){
 			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
-				a.y= b.y - a.h;
+				a.y = b.y - a.h;
+				ny = a.y;
 				a.grounded = 1;
 				a.velocityY = 0;
 				if (b.hit == true){
@@ -62,7 +64,6 @@ function collision(a){
 						kick(a);
 					}
 				}
-				update(a);
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
 
@@ -77,12 +78,13 @@ function collision(a){
 				}
 
 				if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
-					a.y = b.y + b.h;
-					a.velocityY = 0;
 					if (b.classList.contains("block") || b.classList.contains("qblock")){
-						b.hit = true;
+						if (b.animation != -1){
+							b.hit = true;
+						}
 					}
-					update(a);
+					a.velocityY = -0.1;
+					ny = b.y + b.h;
 				}
 				else if((a.y-a.velocityY+a.h-b.y>0)&&(b.y+b.h-a.y-a.velocityY>0)){
 					if (a.x < b.x){
@@ -100,18 +102,19 @@ function collision(a){
 						}
 						a.velocityX = - a.velocityX;
 					}
-					update(a);
 				}
 			}
 		}
 
-							//__________________________
+							//____________________________
+							//
 							//ENTITY -> ENTITY COLLISIONS:
-							//__________________________
+							//____________________________
 
 		else if (a != b){
 			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
-				a.y= b.y - a.h;
+				a.y = b.y - a.h;
+				ny = a.y;
 				a.grounded = 1;
 				if (!b.passengers.includes(a) && a.isPassenger == 0 && !b.static){
 					b.passengers.push(a);
@@ -147,17 +150,8 @@ function collision(a){
 				else{
 					a.velocityY = 0;
 				}
-				update(a);
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
-
-				if (a.rolling == true){
-					new Audio('sfx/kick.wav').play();
-					kick(b);
-				}
-				else{
-					a.velocityX = - a.velocityX
-				}
 
 				if ((a.id == "player" || b.id == "player")){
 					if(b.classList.contains("hostile")){
@@ -169,7 +163,6 @@ function collision(a){
 					var player = document.getElementById("player");
 					if (e.shelled == true){
 						if (e.rolling == true){
-							
 							hit(player)
 						}
 						else{
@@ -187,9 +180,19 @@ function collision(a){
 						hit(player)
 					}
 				}
+				else if (a.rolling == true){
+					new Audio('sfx/kick.wav').play();
+					kick(b);
+				}
+				else{
+					a.velocityX = - a.velocityX
+				}
+
 			}
 		}
 	}
+	a.y = ny;
+	update(a);
 }
 
 

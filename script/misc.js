@@ -39,3 +39,49 @@ function death(){
 		load("1-1")
 	}
 }
+
+function endstage(){
+	player.time = player.time + 1;
+	if (player.time < 100){
+		player.direction = 1;
+		player.velocityY = 5.12;
+		player.velocityX = 0;
+		document.getElementsByClassName("flag")[0].style.transform = "translate(" + (document.getElementsByClassName("flag")[0].getBoundingClientRect().x - document.body.getBoundingClientRect().x) + "px," + (document.getElementsByClassName("flag")[0].getBoundingClientRect().y + 5.12) + "px)";
+		player.y = player.y + player.velocityY;
+		update(player);
+		collision(player);
+	}
+	else if (player.time == 100){
+		player.direction = 0;
+		player.x = player.x + 72;
+		player.velocityY = 0;
+		update(player);
+	}
+	else if (player.time == 150){
+		new Audio('sfx/clear.wav').play();
+	}
+	else if (player.time > 160){
+		player.direction = 1;
+		player.velocityX = 2.5;
+		physics();
+	}
+	if (player.time == 700){
+		load("1-1")
+	}
+}
+
+
+function stomp(elem){
+	elem.velocityX = 0;
+	new Audio('sfx/stomp.wav').play();
+	elem.isDead = true;
+	elem.animation = 0;
+}
+
+
+function kick(elem){
+	elem.velocityY = -10;
+	elem.setAttribute("name","");
+	elem.hh = true;
+	new Audio('sfx/kick.wav').play();
+}

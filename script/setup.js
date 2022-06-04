@@ -18,7 +18,7 @@ function setup(){
 		}
 		element.h = Math.round(element.clientHeight);
 		element.w = Math.round(element.clientWidth);
-		element.py = 0; 		//Previous height, important for later when calculating collisions
+		element.py = 0; 		//Previous height, important when calculating collisions from under another element
 		element.velocityX = 0;
 		element.velocityY = 0;
 		element.grounded = false;

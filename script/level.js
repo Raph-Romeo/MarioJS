@@ -7,7 +7,6 @@ function load(level,pipe=0){
 	window.scrollTo(0,0);
 
 	if (level == "elmir"){
-
 		const player = document.getElementById("player");
 		player.x = 128;
 		player.y = window.innerHeight - 128 - 64;
@@ -22,6 +21,7 @@ function load(level,pipe=0){
 		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI LE TRYHARD.</h1>';
 		level_length = 300 * 64;
 	}
+
 	if (level == "debug"){
 
 		const player = document.getElementById("player");
@@ -34,9 +34,9 @@ function load(level,pipe=0){
 		setObject("koopa",512,window.innerHeight - 224);
 		setObject("koopa",1024,window.innerHeight - 224);
 		
-		setObject("pipe",28*64,window.innerHeight - 256,128,128);
-		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">DEBUG LEVEL - KOOPA TEST </h1>';
+		setObject("pipe",22*64,window.innerHeight - 256,128,128);
 		level_length = 300 * 64;
+
 	}
 
 
