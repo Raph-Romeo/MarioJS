@@ -46,5 +46,8 @@ function setup(){
 			element.bounce = false;
 			element.bump = true;
 		}
+		if (element.id == "player"){
+			element.w = 48;
+		}
 	}
 }

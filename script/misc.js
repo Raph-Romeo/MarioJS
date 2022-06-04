@@ -53,7 +53,7 @@ function endstage(){
 	}
 	else if (player.time == 100){
 		player.direction = 0;
-		player.x = player.x + 72;
+		player.x = player.x + 55;
 		player.velocityY = 0;
 		update(player);
 	}
