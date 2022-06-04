@@ -57,7 +57,6 @@ function stomp(elem){
 	new Audio('sfx/stomp.wav').play();
 	elem.isDead = true;
 	elem.animation = 0;
-	elem.setAttribute("name","");
 }
 
 

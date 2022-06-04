@@ -18,6 +18,7 @@ div[name="element"]{height:64px;width:64px;}
 
 .pipe{background:url(textures/objects/pipe.png);background-size:128px;}
 .goomba{background:url(textures/entity/goomba.png);background-size:64px;}
+.koopa{background:url(textures/entity/koopa.png);background-size:128px 384px;}
 .block{background:url(textures/objects/block.png);background-size:64px;}
 .blockcave{background:url(textures/objects/ug/block.png);background-size:64px;}
 

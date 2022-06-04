@@ -42,7 +42,7 @@ function setup(){
 		
 		if (element.classList.contains("goomba") || element.classList.contains("koopa")){
 			element.moving = 1;
-			element.velocityX = -2;
+			element.velocityX = -1.5;
 			element.bounce = false;
 			element.bump = true;
 		}

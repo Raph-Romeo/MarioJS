@@ -7,6 +7,15 @@ function pos(num){
 	}
 }
 
+function hit(player){
+	if (player.hp>1){
+		player.hp = player.hp - 1;
+	}
+	else{
+		player.isDead = true;
+	}
+}
+
 function death(){
 	var player = document.getElementById("player")
 	if (player.animation >= 0){

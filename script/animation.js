@@ -1,6 +1,7 @@
 function animations(){
 	player_animation();
 	goomba_animation();
+	koopa_animation();
 	block_animation();
 }
 
@@ -87,10 +88,86 @@ function goomba_animation(){
 			}
 			else if (elem.hh != true){
 				elem.animation = elem.animation + 1;
+				elem.setAttribute('name', '')
 				elem.style.backgroundPositionY = 64 + "px";
 				if (elem.animation == 15){
 					elem.style.display = "none";
 					elem.remove();
+				}
+			}
+			if (elem.hh == true){
+				elem.y = elem.y + elem.velocityY;
+				elem.x = elem.x + elem.velocityX;
+				elem.velocityY = elem.velocityY + 1;
+				elem.setAttribute('name', '')
+				elem.style.transform = "translate(" + elem.x + "px," + elem.y + "px) rotate(180deg)";
+				if (elem.y > window.innerHeight){
+					elem.remove();
+				}
+			}
+		}
+	}
+}
+
+function koopa_animation(){
+	var koopas = document.getElementsByClassName("koopa");
+	for (var i=0;i<koopas.length;++i){
+		var elem = koopas[i];
+		if (( - elem.x < document.body.getBoundingClientRect().x + 64) && (- elem.x > - window.innerWidth + document.body.getBoundingClientRect().x)){
+			if (elem.isDead == false && elem.hh != true){
+				elem.animation = elem.animation + 0.05;
+				if (elem.animation >= 2 && elem.velocityX < 0){
+					elem.animation = 0;
+				}
+				if (elem.velocityX > 0){
+					if (elem.animation >= 4){
+						elem.animation = 0;
+					}
+					if (elem.animation < 2){
+						elem.animation = 2
+					}
+				}
+				elem.style.backgroundPositionY = (parseInt(elem.animation) * -96) + "px";
+			}
+			else if (elem.hh != true){
+				elem.animation = elem.animation + 1;
+				if (elem.animation == 1){
+					elem.y = elem.y + 40;
+					elem.h = 54;
+					elem.style.height = "64px";
+					elem.style.backgroundPosition = "-64px 0px";
+					elem.velocityX = 0;
+					elem.shelled = true;
+					update(elem);
+				}
+				if (elem.rolling == true){
+					if (elem.animation > 256){
+						elem.y = elem.y;
+						elem.h = 54;
+						elem.style.height = "64px";
+						elem.style.backgroundPosition = "-64px 0px";
+						elem.shelled = true;
+						update(elem);
+					}
+					elem.animation = 2
+				}
+				if (elem.animation == 256){
+					elem.style.backgroundPosition = "-64px -64px";
+					elem.y = elem.y - 4;
+					elem.h = 58;
+					elem.style.height = "64px";
+					update(elem);
+				}
+				if (elem.animation == 320){
+					elem.style.backgroundPositionY = "-96px";
+					elem.style.backgroundPositionX = "0px";
+					elem.velocityX = -1.5;
+					elem.isDead = false;
+					elem.shelled = false;
+					elem.y = elem.y - 36;
+					update(elem);
+					elem.style.height = "96px";
+					elem.h = 96;
 				}
 			}
 			if (elem.hh == true){

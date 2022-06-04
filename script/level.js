@@ -25,6 +25,20 @@ function load(level,pipe=0){
 		level_length = 300 * 64;
 		godmode();
 	}
+	if (level == "debug2"){
+
+		const player = document.getElementById("player");
+		player.x = 128;
+		player.y = window.innerHeight - 128 - 64;
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
+		document.body.style.background = "black";
+
+		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
+		setObject("koopa",512,window.innerHeight - 224);
+		setObject("pipe",28*64,window.innerHeight - 256,128,128);
+		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">DEBUG LEVEL - KOOPA TEST </h1>';
+		level_length = 300 * 64;
+	}
 
 
 //LEVEL 1-1-------------------------------------------
@@ -99,6 +113,7 @@ function load(level,pipe=0){
 		setObject("block",94*64,window.innerHeight - 384);
 		setObject("goomba",97*64,window.innerHeight - 192);
 		setObject("goomba",98.5*64,window.innerHeight - 192);
+		setObject("koopa",106.5*64,window.innerHeight - 192 - 32);
 		setObject("block",100*64,window.innerHeight - 384);
 		setObject("block",101*64,window.innerHeight - 384);
 		setObject("qblock",106*64,window.innerHeight - 384);
@@ -245,7 +260,7 @@ function setObject(name,x,y,w=0,h=0) {
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;position:absolute;" class="background"></div>';
 	}
 	if (name == "goomba"){
-		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="goomba" name="element"></div>';
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="goomba hostile" name="element"></div>';
 	}
 	if (name == "mblock"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="mblock static" name="element"></div>';
@@ -269,5 +284,8 @@ function setObject(name,x,y,w=0,h=0) {
 	}
 	if (name == "castle1"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:calc(5*64px);height:calc(5*64px)" class="static castle"></div>';
+	}
+	if (name == "koopa"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:96px;position:absolute;" class="koopa hostile" name="element"></div>';
 	}
 }
