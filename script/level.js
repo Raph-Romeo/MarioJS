@@ -6,7 +6,7 @@ function load(level,pipe=0){
 	player.animation = 0;
 	window.scrollTo(0,0)
 
-	if (level == "debug"){
+	if (level == "elmir"){
 
 		const player = document.getElementById("player");
 		player.x = 128;
@@ -15,17 +15,14 @@ function load(level,pipe=0){
 		document.body.style.background = "black";
 
 		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
-		for (var i = 0;i<100;++i){
-			setObject("goomba",(i+8)*128,window.innerHeight - 128 - i*256);
+		setObject("koopa",512,window.innerHeight - 224);
+		for (var i = 0;i<200;++i){
+			setObject("goomba",(i+12)*128,window.innerHeight - 128 - 64);
 		}
-		for (var i = 0;i<100;++i){
-			setObject("goomba",(i+8)*128,window.innerHeight - 128 - 64);
-		}
-		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI EST TROP FORT. EH OUI, CELA EST VRAI. Il a reussit a battre ce niveau impossible, donc je le felicite pour son Talent.</h1>';
+		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">ELMIR BATJARI LE TRYHARD.</h1>';
 		level_length = 300 * 64;
-		godmode();
 	}
-	if (level == "debug2"){
+	if (level == "debug"){
 
 		const player = document.getElementById("player");
 		player.x = 128;
