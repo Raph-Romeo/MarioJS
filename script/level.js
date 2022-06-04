@@ -113,7 +113,11 @@ function load(level,pipe=0){
 		setObject("block",94*64,window.innerHeight - 384);
 		setObject("goomba",97*64,window.innerHeight - 192);
 		setObject("goomba",98.5*64,window.innerHeight - 192);
-		setObject("koopa",106.5*64,window.innerHeight - 192 - 32);
+		setObject("koopa",106*64,window.innerHeight - 192 - 32);
+		setObject("goomba",117.5*64,window.innerHeight - 192);
+		setObject("goomba",119.5*64,window.innerHeight - 192);
+		setObject("goomba",121*64,window.innerHeight - 192);
+		setObject("goomba",121.5*64,window.innerHeight - 192);
 		setObject("block",100*64,window.innerHeight - 384);
 		setObject("block",101*64,window.innerHeight - 384);
 		setObject("qblock",106*64,window.innerHeight - 384);

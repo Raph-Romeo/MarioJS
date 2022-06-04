@@ -96,6 +96,12 @@ function collision(a){
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
 
 				//CHECK FOR SPECIAL COLLISIONS_____________________________
+		
+				if (a.rolling == true && b.classList.contains("hostile")){
+					new Audio('sfx/kick.wav').play();
+					kick(b);
+					a.velocityX = - a.velocityX
+				}
 
 					//COLLISION WITH ENEMY FROM THE SIDES
 
@@ -108,8 +114,8 @@ function collision(a){
 					}
 					var player = document.getElementById("player");
 					if (e.shelled == true){
-						new Audio('sfx/kick.wav').play();
 						if (e.rolling == true){
+							
 							hit(player)
 						}
 						else{
@@ -162,6 +168,9 @@ function collision(a){
 						a.velocityX = 0;
 					}
 					else{
+						if (a.rolling == true && b.classList.contains("static")){
+							new Audio('sfx/bump.wav').play();
+						}
 						a.velocityX = - a.velocityX;
 					}
 					update(a);

@@ -26,6 +26,7 @@ function up(player){
 	if (player.grounded){
 		player.grounded = 0;
 		player.velocityY = -16;
+		new Audio('sfx/jump-small.wav').play();
 	}
 	if (player.velocityY < -5){
 		player.velocityY = player.velocityY - 0.6;
