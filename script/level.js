@@ -32,6 +32,8 @@ function load(level,pipe=0){
 
 		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
 		setObject("koopa",512,window.innerHeight - 224);
+		setObject("koopa",1024,window.innerHeight - 224);
+		
 		setObject("pipe",28*64,window.innerHeight - 256,128,128);
 		body.innerHTML += '<h1 style="white-space: nowrap;color:#AAA;font-family:tahoma;font-weight:1;font-size:100px;position:absolute;bottom:128px;padding:0;z-index:-1">DEBUG LEVEL - KOOPA TEST </h1>';
 		level_length = 300 * 64;

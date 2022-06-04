@@ -171,6 +171,9 @@ function koopa_animation(){
 				}
 			}
 			if (elem.hh == true){
+				elem.h = 54;
+				elem.style.height = "64px";
+				elem.style.backgroundPosition = "-64px 0px";
 				elem.y = elem.y + elem.velocityY;
 				elem.x = elem.x + elem.velocityX;
 				elem.velocityY = elem.velocityY + 1;
