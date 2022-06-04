@@ -164,7 +164,7 @@ function koopa_animation(){
 					elem.velocityX = -1.5;
 					elem.isDead = false;
 					elem.shelled = false;
-					elem.y = elem.y - 36;
+					elem.y = elem.y - 40;
 					update(elem);
 					elem.style.height = "96px";
 					elem.h = 96;
