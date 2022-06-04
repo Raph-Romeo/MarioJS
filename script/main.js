@@ -8,7 +8,6 @@ window.addEventListener("load", function(){
 
 function main(){
 
-	window.scrollTo(0,0);
 	if (document.getElementById("player").isDead == false){
 		if (player.endstage != true){
 			physics();
@@ -25,6 +24,5 @@ function main(){
 	else{
 		death();
 	}
-
 	setTimeout(main,10);
 }

@@ -1,17 +1,17 @@
-var level_length = 0
+var level_length = 0;
 function load(level,pipe=0){
 	const body = document.body;
-	body.style.transform = ""
+	body.style.transform = "";
 	body.innerHTML = '<div name="element" id="player"></div>'
 	player.animation = 0;
-	window.scrollTo(0,0)
+	window.scrollTo(0,0);
 
 	if (level == "elmir"){
 
 		const player = document.getElementById("player");
 		player.x = 128;
 		player.y = window.innerHeight - 128 - 64;
-		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "black";
 
 		setObject("groundcave",0,window.innerHeight - 128,300 * 64,128);
@@ -114,9 +114,9 @@ function load(level,pipe=0){
 		setObject("goomba",98.5*64,window.innerHeight - 192);
 		setObject("koopa",106*64,window.innerHeight - 192 - 32);
 		setObject("goomba",117.5*64,window.innerHeight - 192);
-		setObject("goomba",119.5*64,window.innerHeight - 192);
+		setObject("goomba",118.9*64,window.innerHeight - 192);
 		setObject("goomba",121*64,window.innerHeight - 192);
-		setObject("goomba",121.5*64,window.innerHeight - 192);
+		setObject("goomba",122.3*64,window.innerHeight - 192);
 		setObject("block",100*64,window.innerHeight - 384);
 		setObject("block",101*64,window.innerHeight - 384);
 		setObject("qblock",106*64,window.innerHeight - 384);
