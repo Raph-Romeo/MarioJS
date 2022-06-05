@@ -50,7 +50,7 @@ function load(level,pipe=0){
 			player.y = window.innerHeight - 128 - 64;
 		}
 		if (pipe == 1){
-			player.x = 163.5 * 64;
+			player.x = 163.5 * 64 + 16;
 			player.y = window.innerHeight - 128 - 192;
 		}
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
@@ -91,7 +91,7 @@ function load(level,pipe=0){
 		setObject("pipe",28*64,window.innerHeight - 256,128,128);
 		setObject("pipe",38*64,window.innerHeight - 320,128,192);
 		setObject("pipe",46*64,window.innerHeight - 384,128,256);
-		setObject("pipe",56*64,window.innerHeight - 384,128,256);
+		setObject("pipe",56*64,window.innerHeight - 384,128,256,"1-1b","down");
 		setObject("block",77*64,window.innerHeight - 384);
 		setObject("qblock",78*64,window.innerHeight - 384);
 		setObject("block",79*64,window.innerHeight - 384);
@@ -184,14 +184,14 @@ function load(level,pipe=0){
 		setObject("blockcave",0*64,window.innerHeight - 128 - 11*64,64,11*64);
 		setObject("blockcave",4*64,window.innerHeight - 128 - 3*64,7*64,3*64);
 		setObject("blockcave",4*64,window.innerHeight - 128 - 11*64,7*64,1*64);
-		setObject("lpipe",13*64,window.innerHeight - 128 - 2*64,3*64,2*64);
+		setObject("lpipe",13*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-1","right");
 		setObject("hpipe",15*64,window.innerHeight - 128 - 11*64,64,9*64);
 		level_length = 16 * 64;
 	}
 
 //LEVEL 1-2-------------------------------------------
 
-	if (level == "1-2a"){
+	if (level == "1-2"){
 		const player = document.getElementById("player");
 		if (pipe == 0){
 			player.x = 128;
@@ -202,12 +202,12 @@ function load(level,pipe=0){
 		setObject("background",0,window.innerHeight - 176*4 - 128,16 * 64);
 		setObject("castle1",0,window.innerHeight - 128 - 64*5);
 		setObject("pipe",12*64,window.innerHeight - 384,128,256);
-		setObject("lpipe",10*64,window.innerHeight - 128 - 2*64,3*64,2*64);
+		setObject("lpipe",10*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-2a","right");
 		setObject("ground",0,window.innerHeight - 128,16 * 64,128);
 		level_length = 16 * 64;
 	}
 
-	if (level == "1-2"){
+	if (level == "1-2a"){
 
 		const player = document.getElementById("player");
 		player.x = 96;
@@ -248,7 +248,7 @@ function load(level,pipe=0){
 	setup()	
 }
 
-function setObject(name,x,y,w=0,h=0) {
+function setObject(name,x,y,w=0,h=0,destination=0,direction=0) {
 	const body = document.body;
 	if (name == "ground"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:calc(100vh - ' + h + 'px)' +'" class="ground static" name="element"></div>';
@@ -272,7 +272,7 @@ function setObject(name,x,y,w=0,h=0) {
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px" class="static qblock qblockcave" name="element"></div>';
 	}
 	if (name == "pipe"){
-		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="pipe static" name="element"></div>';
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="pipe static" name="element" id="' + destination + '|' + direction + '"></div>';
 	}
 	if (name == "background"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;position:absolute;" class="background"></div>';
@@ -293,7 +293,7 @@ function setObject(name,x,y,w=0,h=0) {
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="mushroom" name="element"></div>';
 	}
 	if (name == "lpipe"){
-		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="lpipe static" name="element"></div>';
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="lpipe static" name="element" id="' + destination + '|' + direction + '"></div>';
 	}
 	if (name == "flag"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:calc(10 * 64px);position:absolute;" class="pole static"></div>';

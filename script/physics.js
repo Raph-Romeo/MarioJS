@@ -32,7 +32,6 @@ function physics(){
 					element.py = element.y
 					element.y = element.y + element.velocityY;
 					element.x = element.x + element.velocityX + element.passengerVelocityX;
-					update(element);
 					collision(element);
 				}
 				if (element.rolling != true){
@@ -64,17 +63,27 @@ function collision(a){
 						kick(a);
 					}
 				}
+				else if (b.tunnel == true){
+					if (a.crouch == true){
+						if (a.x - 8 - b.x > 0 && b.x + b.w - a.x - a.w - 8 >0){
+							if (b.classList.contains("pipe")){
+								pipe(b.destination,b.direction);
+							}
+						}
+					}
+				}
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
 
-				if (a.id == "player" && b.classList.contains('pole_collision')){
-					b.remove();
-					a.time = 0;
-					a.grounded = 1;
-					a.direction = 1;
-					a.endstage = true;
-					a.velocityX = 0;
-					new Audio('sfx/flagpole.wav').play();
+				if (a.id == "player"){
+					if (b.classList.contains('pole_collision')){
+						flagpole(a,b);
+					}
+					if (b.classList.contains("lpipe")){
+						if (b.tunnel == true){
+							pipe(b.destination,b.direction);
+						}
+					}
 				}
 
 				if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
@@ -108,7 +117,7 @@ function collision(a){
 
 							//____________________________
 							//
-							//ENTITY -> ENTITY COLLISIONS:
+							//ENTITY <-> ENTITY COLLISIONS:
 							//____________________________
 
 		else if (a != b){

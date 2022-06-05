@@ -36,10 +36,11 @@ function up(player){
 
 function down(player){
 	player.crouch = true;
+	collision(player);
 }
 
 function run(player){
-	player.speed = 12;
+	player.speed = 10;
 }
 
 

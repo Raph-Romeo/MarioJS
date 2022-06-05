@@ -66,7 +66,8 @@ function endstage(){
 		physics();
 	}
 	if (player.time == 700){
-		load("1-2")
+		lvl = lvl + 1;
+		load(levels[lvl])
 	}
 }
 

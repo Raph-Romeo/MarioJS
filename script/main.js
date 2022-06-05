@@ -2,19 +2,41 @@ window.addEventListener("load", function(){
 
 	setup();
 	main();
-        load("1-1");
+        load(levels[lvl]);
 
 });
 
 function main(){
 
-	if (document.getElementById("player").isDead == false){
-		if (player.endstage != true){
+	if (player.isDead == false){
+		if (player.cutscene != true){
 			physics();
 			controls();
 		}
 		else{
-			endstage();
+			if (player.endstage == true){
+				endstage();
+			}
+			else if (player.pipe == "down"){
+				player.y = player.y + 0.8;
+				update(player);
+				player.count = player.count + 1;
+				if (player.count == 200){
+					player.pipe = false;
+					cutscene = false;
+					load(player.pipeDestination);
+				}
+			}
+			else if (player.pipe == "right"){
+				player.x = player.x + 0.8;
+				update(player);
+				player.count = player.count + 1;
+				if (player.count == 200){
+					player.pipe = false;
+					cutscene = false;
+					load(player.pipeDestination);
+				}
+			}
 		}
 		animations();
 		if (level_length > window.innerWidth){

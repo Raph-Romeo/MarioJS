@@ -1,5 +1,8 @@
-var elements = document.getElementsByName("element")
-var screenSize = window.innerWidth
+var elements = document.getElementsByName("element");
+var screenSize = window.innerWidth;
+var screenHeight = window.innerHeight;
+const levels = ["1-1","1-2","1-3","1-4"];
+var lvl = 0;
 
 function setup(){
 	for (var i=0;i < elements.length; ++i){
@@ -31,6 +34,13 @@ function setup(){
 			element.grounded = true;
 			element.static = true;
 			update(element);
+			if (element.classList.contains("pipe") || element.classList.contains("lpipe")){
+				if (element.id != "0|0"){
+					element.tunnel = true;
+					element.destination = element.id.split("|")[0]
+					element.direction = element.id.split("|")[1]
+				}
+			}
 		}
 		else{
 			element.static = false;
