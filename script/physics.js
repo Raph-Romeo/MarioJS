@@ -81,7 +81,9 @@ function collision(a){
 					}
 					if (b.classList.contains("lpipe")){
 						if (b.tunnel == true){
-							pipe(b.destination,b.direction,b.part);
+							if (a.grounded == 1){
+								pipe(b.destination,b.direction,b.part);
+							}
 						}
 					}
 				}

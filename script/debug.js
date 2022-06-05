@@ -20,7 +20,7 @@ function godmode(){
 }
 
 function pipe(level,direction,part){
-	var player = document.getElementById("player")
+	const player = document.getElementById("player")
 	new Audio('sfx/pipe.wav').play();
 	player.pipe = direction;
 	player.cutscene = true;

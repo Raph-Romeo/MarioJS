@@ -46,7 +46,7 @@ function load(level,pipe=0){
 
 		const player = document.getElementById("player");
 		if (pipe == 0){
-			player.x = 128;
+			player.x = 144;
 			player.y = window.innerHeight - 128 - 64;
 		}
 		if (pipe == 1){
@@ -194,23 +194,24 @@ function load(level,pipe=0){
 	if (level == "1-2"){
 		const player = document.getElementById("player");
 		if (pipe == 0){
-			player.x = 128;
+			player.x = 144;
 			player.y = window.innerHeight - 128 - 64;
 		}
-		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
+		player.setAttribute("intro","true");
+		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "#9494FF";
 		setObject("background",0,window.innerHeight - 176*4 - 128,16 * 64);
 		setObject("castle1",0,window.innerHeight - 128 - 64*5);
 		setObject("pipe",12*64,window.innerHeight - 384,128,256);
-		setObject("lpipe",10*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-2a","right");
 		setObject("ground",0,window.innerHeight - 128,16 * 64,128);
+		setObject("lpipe",10*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-2a","right");
 		level_length = 16 * 64;
 	}
 
 	if (level == "1-2a"){
 
 		const player = document.getElementById("player");
-		player.x = 96;
+		player.x = 112;
 		player.y = window.innerHeight - 128 - 11 * 64;
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "black";
