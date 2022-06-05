@@ -35,10 +35,11 @@ function setup(){
 			element.static = true;
 			update(element);
 			if (element.classList.contains("pipe") || element.classList.contains("lpipe")){
-				if (element.id != "0|0"){
+				if (element.id != "0|0|0"){
 					element.tunnel = true;
-					element.destination = element.id.split("|")[0]
-					element.direction = element.id.split("|")[1]
+					element.destination = element.id.split("|")[0];
+					element.direction = element.id.split("|")[1];
+					element.part = element.id.split("|")[2];
 				}
 			}
 		}

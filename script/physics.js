@@ -67,7 +67,7 @@ function collision(a){
 					if (a.crouch == true){
 						if (a.x - 8 - b.x > 0 && b.x + b.w - a.x - a.w - 8 >0){
 							if (b.classList.contains("pipe")){
-								pipe(b.destination,b.direction);
+								pipe(b.destination,b.direction,b.part);
 							}
 						}
 					}
@@ -81,7 +81,7 @@ function collision(a){
 					}
 					if (b.classList.contains("lpipe")){
 						if (b.tunnel == true){
-							pipe(b.destination,b.direction);
+							pipe(b.destination,b.direction,b.part);
 						}
 					}
 				}

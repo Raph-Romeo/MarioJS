@@ -19,12 +19,13 @@ function godmode(){
 	setTimeout(godmode, 10);
 }
 
-function pipe(level,direction){
+function pipe(level,direction,part){
 	var player = document.getElementById("player")
 	new Audio('sfx/pipe.wav').play();
 	player.pipe = direction;
 	player.cutscene = true;
 	player.pipeDestination = level;
+	player.pipeDestination_part = part;
 	player.style.zIndex = 0;
 	player.count = 0;
 }

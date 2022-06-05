@@ -184,7 +184,7 @@ function load(level,pipe=0){
 		setObject("blockcave",0*64,window.innerHeight - 128 - 11*64,64,11*64);
 		setObject("blockcave",4*64,window.innerHeight - 128 - 3*64,7*64,3*64);
 		setObject("blockcave",4*64,window.innerHeight - 128 - 11*64,7*64,1*64);
-		setObject("lpipe",13*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-1","right");
+		setObject("lpipe",13*64,window.innerHeight - 128 - 2*64,3*64,2*64,"1-1","right",1);
 		setObject("hpipe",15*64,window.innerHeight - 128 - 11*64,64,9*64);
 		level_length = 16 * 64;
 	}
@@ -248,7 +248,7 @@ function load(level,pipe=0){
 	setup()	
 }
 
-function setObject(name,x,y,w=0,h=0,destination=0,direction=0) {
+function setObject(name,x,y,w=0,h=0,destination=0,direction=0,part=0) {
 	const body = document.body;
 	if (name == "ground"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:calc(100vh - ' + h + 'px)' +'" class="ground static" name="element"></div>';
@@ -272,7 +272,7 @@ function setObject(name,x,y,w=0,h=0,destination=0,direction=0) {
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px" class="static qblock qblockcave" name="element"></div>';
 	}
 	if (name == "pipe"){
-		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="pipe static" name="element" id="' + destination + '|' + direction + '"></div>';
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="pipe static" name="element" id="' + destination + '|' + direction + '|' + part + '"></div>';
 	}
 	if (name == "background"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;position:absolute;" class="background"></div>';
@@ -293,7 +293,7 @@ function setObject(name,x,y,w=0,h=0,destination=0,direction=0) {
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="mushroom" name="element"></div>';
 	}
 	if (name == "lpipe"){
-		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="lpipe static" name="element" id="' + destination + '|' + direction + '"></div>';
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="lpipe static" name="element" id="' + destination + '|' + direction + '|' + part + '"></div>';
 	}
 	if (name == "flag"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:calc(10 * 64px);position:absolute;" class="pole static"></div>';

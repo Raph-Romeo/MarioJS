@@ -24,7 +24,7 @@ function main(){
 				if (player.count == 200){
 					player.pipe = false;
 					cutscene = false;
-					load(player.pipeDestination);
+					load(player.pipeDestination,player.pipeDestination_part);
 				}
 			}
 			else if (player.pipe == "right"){
@@ -34,7 +34,7 @@ function main(){
 				if (player.count == 200){
 					player.pipe = false;
 					cutscene = false;
-					load(player.pipeDestination);
+					load(player.pipeDestination,player.pipeDestination_part);
 				}
 			}
 		}
