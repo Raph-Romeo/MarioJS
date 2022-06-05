@@ -210,11 +210,7 @@ function block_animation(){
 	for (var i=0;i<blocks.length;++i){
 		block = blocks[i];
 		if (block.hit == true){
-			block.style.background = "url(textures/objects/hblock.png)";
-			if (block.classList.contains("qblockcave")){
-				block.style.background = "url(textures/objects/ug/hblock.png)";
-			}
-			block.style.backgroundSize = "64px";
+			block.style.backgroundPositionY = "64px";
 			++block.animation;
 			if (block.animation <= 8){
 				block.y = block.y - 2.5;

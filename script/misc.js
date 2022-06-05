@@ -66,7 +66,7 @@ function endstage(){
 		physics();
 	}
 	if (player.time == 700){
-		load("1-1")
+		load("1-2")
 	}
 }
 

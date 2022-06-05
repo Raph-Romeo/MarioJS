@@ -220,10 +220,25 @@ function load(level,pipe=0){
 		setObject("qblockcave",12*64,window.innerHeight - 384);
 		setObject("qblockcave",13*64,window.innerHeight - 384);
 		setObject("qblockcave",14*64,window.innerHeight - 384);
+		setObject("mblockcave",17*64,window.innerHeight - 192,64,64);
+		setObject("mblockcave",19*64,window.innerHeight - 192 - 64,64,128);
+		setObject("mblockcave",21*64,window.innerHeight - 192 - 128,64,192);
+		setObject("mblockcave",23*64,window.innerHeight - 192 - 192,64,256);
+		setObject("mblockcave",25*64,window.innerHeight - 192 - 192,64,256);
+		setObject("mblockcave",27*64,window.innerHeight - 192 - 128,64,192);
+		setObject("blockcave",29*64,window.innerHeight - 192 - 256,64,64);
+		setObject("mblockcave",31*64,window.innerHeight - 192 - 128,64,192);
+
 
 		setObject("groundcave",0,window.innerHeight - 128,192 * 64,128);
+		setObject("goombacave",13*64,window.innerHeight - 192);
+		setObject("goombacave",14*64,window.innerHeight - 192);
+		setObject("goombacave",28.5*64,window.innerHeight - 192);
 		setObject("blockcave",0*64,window.innerHeight - 128 - 11*64,64,11*64);
-		setObject("blockcave",6*64,window.innerHeight - 128 - 11*64,7*64,1*64);
+		setObject("blockcave",6*64,window.innerHeight - 128 - 11*64,50*64,1*64);
+		setObject("koopacave",39*64,window.innerHeight - 192 - 32);
+		setObject("koopacave",40.5*64,window.innerHeight - 192 - 32);
+		setObject("koopacave",50*64,window.innerHeight - 192 - 32);
 		level_length = 192 * 64;
 	}
 
@@ -265,8 +280,14 @@ function setObject(name,x,y,w=0,h=0) {
 	if (name == "goomba"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="goomba hostile" name="element"></div>';
 	}
+	if (name == "goombacave"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="goomba goombacave hostile" name="element"></div>';
+	}
 	if (name == "mblock"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="mblock static" name="element"></div>';
+	}
+	if (name == "mblockcave"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:' + w + 'px;height:' + h + 'px" class="mblock mblockcave static" name="element"></div>';
 	}
 	if (name == "mushroom"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:64px;position:absolute;" class="mushroom" name="element"></div>';
@@ -290,5 +311,8 @@ function setObject(name,x,y,w=0,h=0) {
 	}
 	if (name == "koopa"){
 		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:96px;position:absolute;" class="koopa hostile" name="element"></div>';
+	}
+	if (name == "koopacave"){
+		body.innerHTML += '<div style="transform:translate(' + x + 'px,' + y + 'px);width:64px;height:96px;position:absolute;" class="koopa koopacave hostile" name="element"></div>';
 	}
 }
