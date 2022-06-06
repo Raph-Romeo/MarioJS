@@ -19,6 +19,22 @@ function godmode(){
 	setTimeout(godmode, 10);
 }
 
+var speed_counter = 0;
+function speedrun(){
+	if (speed_counter == 0){
+		load("1-1");
+		lvl = 0;
+	}
+	if (lvl < 2){
+		++speed_counter;
+	}
+	else{
+		console.log(speed_counter);
+		return;
+	}
+	setTimeout(speedrun,0);
+}
+
 function pipe(level,direction,part){
 	const player = document.getElementById("player")
 	new Audio('sfx/pipe.wav').play();
