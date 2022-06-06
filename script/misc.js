@@ -36,7 +36,7 @@ function death(){
 		player.hp = 1;
 		player.style.zIndex = 1;
 		player.isDead = false;
-		load("1-1")
+		load(levels[lvl])
 	}
 }
 

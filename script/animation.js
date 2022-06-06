@@ -211,6 +211,17 @@ function block_animation(){
 		block = blocks[i];
 		if (block.hit == true){
 			block.style.backgroundPositionY = "64px";
+			if (block.animation == 0){
+				if (block.id == "c"){
+					new Audio('sfx/coin.wav').play();
+				}
+				if (block.id == "s"){
+					new Audio('sfx/powerup-appear.wav').play();
+				}
+				if (block.id == "u"){
+					console.log("1up");
+				}
+			}
 			++block.animation;
 			if (block.animation <= 8){
 				block.y = block.y - 2.5;
