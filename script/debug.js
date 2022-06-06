@@ -7,10 +7,10 @@ function global_collisions(){
 
 function ground(a){
 	if((window.innerHeight==a.y+a.h||window.innerHeight<=a.y+a.h)&&(window.innerHeight+a.velocityY>=a.y+a.h)){
-			a.y = window.innerHeight - a.h
-			a.grounded = 1;
-			update(a)
-			return;
+		a.y = window.innerHeight - a.h
+		a.grounded = 1;
+		update(a)
+		return;
 	}
 }
 
@@ -21,10 +21,6 @@ function godmode(){
 
 var speed_counter = 0;
 function speedrun(){
-	if (speed_counter == 0){
-		load("1-1");
-		lvl = 0;
-	}
 	if (lvl < 2){
 		++speed_counter;
 	}

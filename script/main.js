@@ -2,6 +2,7 @@ window.addEventListener("load", function(){
 
 	setup();
 	main();
+	speedrun()
         load(levels[lvl]);
 
 });
