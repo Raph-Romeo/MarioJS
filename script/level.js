@@ -85,9 +85,9 @@ function load(level,pipe=0){
 		setObject("background",0,window.innerHeight - 176*4 - 128,211 * 64);
 		setObject("qblock",16*64,window.innerHeight - 384,0,0,"c");
 		setObject("block",20*64,window.innerHeight - 384);
-		setObject("block",21*64,window.innerHeight - 384);
-		setObject("qblock",22*64,window.innerHeight - 384,0,0,"s");
-		setObject("block",23*64,window.innerHeight - 384);
+		setObject("qblock",21*64,window.innerHeight - 384,0,0,"s");
+		setObject("block",22*64,window.innerHeight - 384);
+		setObject("qblock",23*64,window.innerHeight - 384,0,0,"c");
 		setObject("block",24*64,window.innerHeight - 384);
 		setObject("qblock",22*64,window.innerHeight - 640,0,0,"c");
 		setObject("pipe",28*64,window.innerHeight - 256,128,128);
@@ -95,7 +95,7 @@ function load(level,pipe=0){
 		setObject("pipe",46*64,window.innerHeight - 384,128,256);
 		setObject("pipe",56*64,window.innerHeight - 384,128,256,"1-1b","down");
 		setObject("block",77*64,window.innerHeight - 384);
-		setObject("qblock",78*64,window.innerHeight - 384);
+		setObject("qblock",78*64,window.innerHeight - 384,0,0,"s");
 		setObject("block",79*64,window.innerHeight - 384);
 		setObject("block",80*64,window.innerHeight - 640);
 		setObject("goomba",80*64,window.innerHeight - 640 - 64);
@@ -110,7 +110,7 @@ function load(level,pipe=0){
 		setObject("block",91*64,window.innerHeight - 640);
 		setObject("block",92*64,window.innerHeight - 640);
 		setObject("block",93*64,window.innerHeight - 640);
-		setObject("qblock",94*64,window.innerHeight - 640);
+		setObject("qblock",94*64,window.innerHeight - 640,0,0,"c");
 		setObject("block",94*64,window.innerHeight - 384);
 		setObject("goomba",97*64,window.innerHeight - 192);
 		setObject("goomba",98.5*64,window.innerHeight - 192);
@@ -121,10 +121,10 @@ function load(level,pipe=0){
 		setObject("goomba",122.3*64,window.innerHeight - 192);
 		setObject("block",100*64,window.innerHeight - 384);
 		setObject("block",101*64,window.innerHeight - 384);
-		setObject("qblock",106*64,window.innerHeight - 384);
-		setObject("qblock",109*64,window.innerHeight - 384);
-		setObject("qblock",109*64,window.innerHeight - 640);
-		setObject("qblock",112*64,window.innerHeight - 384);
+		setObject("qblock",106*64,window.innerHeight - 384,0,0,"c");
+		setObject("qblock",109*64,window.innerHeight - 384,0,0,"c");
+		setObject("qblock",109*64,window.innerHeight - 640,0,0,"s");
+		setObject("qblock",112*64,window.innerHeight - 384,0,0,"c");
 		setObject("goomba",22*64,window.innerHeight - 192);
 		setObject("goomba",40*64,window.innerHeight - 192);
 		setObject("goomba",51*64,window.innerHeight - 192);
@@ -134,8 +134,8 @@ function load(level,pipe=0){
 		setObject("block",122*64,window.innerHeight - 640);
 		setObject("block",123*64,window.innerHeight - 640);
 		setObject("block",128*64,window.innerHeight - 640);
-		setObject("qblock",129*64,window.innerHeight - 640);
-		setObject("qblock",130*64,window.innerHeight - 640);
+		setObject("qblock",129*64,window.innerHeight - 640,0,0,"c");
+		setObject("qblock",130*64,window.innerHeight - 640,0,0,"c");
 		setObject("block",131*64,window.innerHeight - 640);
 		setObject("block",129*64,window.innerHeight - 384);
 		setObject("block",130*64,window.innerHeight - 384);
@@ -147,7 +147,7 @@ function load(level,pipe=0){
 
 		setObject("block",168*64,window.innerHeight - 384);
 		setObject("block",169*64,window.innerHeight - 384);
-		setObject("qblock",170*64,window.innerHeight - 384); //HAS TO BE QUESTION MARK
+		setObject("qblock",170*64,window.innerHeight - 384,0,0,"c");
 		setObject("block",171*64,window.innerHeight - 384);
 
 		setObject("goomba",174*64,window.innerHeight - 192);
@@ -218,11 +218,11 @@ function load(level,pipe=0){
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "black";
 
-		setObject("qblockcave",10*64,window.innerHeight - 384);
-		setObject("qblockcave",11*64,window.innerHeight - 384);
-		setObject("qblockcave",12*64,window.innerHeight - 384);
-		setObject("qblockcave",13*64,window.innerHeight - 384);
-		setObject("qblockcave",14*64,window.innerHeight - 384);
+		setObject("qblockcave",10*64,window.innerHeight - 384,0,0,"s");
+		setObject("qblockcave",11*64,window.innerHeight - 384,0,0,"c");
+		setObject("qblockcave",12*64,window.innerHeight - 384,0,0,"c");
+		setObject("qblockcave",13*64,window.innerHeight - 384,0,0,"c");
+		setObject("qblockcave",14*64,window.innerHeight - 384,0,0,"c");
 		setObject("mblockcave",17*64,window.innerHeight - 192,64,64);
 		setObject("mblockcave",19*64,window.innerHeight - 192 - 64,64,128);
 		setObject("mblockcave",21*64,window.innerHeight - 192 - 128,64,192);
