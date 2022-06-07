@@ -230,9 +230,9 @@ function load(level,pipe=0){
 		setObject("groundcave",126*64,screenHeight - 128,12 * 64,128);
 		setObject("groundcave",145*64,screenHeight - 128,8 * 64,128);
 		setObject("groundcave",160*64,screenHeight - 128,32 * 64,128);
-		setObject("pipe",178*64,screenHeight - 320,128,192);
-		setObject("pipe",182*64,screenHeight - 320,128,192);
-		setObject("pipe",186*64,screenHeight - 320,128,192);
+		setObject("pipe",178*64,screenHeight - 320,128,192,"elmir","down");
+		setObject("pipe",182*64,screenHeight - 320,128,192,"debug","down");
+		setObject("pipe",186*64,screenHeight - 320,128,192,"debug","down");
 
 
 		setObject("qblockcave",10*64,screenHeight - 384,0,0,"s");
