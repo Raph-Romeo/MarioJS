@@ -83,6 +83,70 @@ function stomp(elem){
 function kick(elem){
 	elem.velocityY = -10;
 	elem.setAttribute("name","");
+	elem.classList.remove("entity");
+	elem.style.zIndex = 10;
 	elem.hh = true;
 	new Audio('sfx/kick.wav').play();
+}
+
+function pipe(level,direction,part){
+	const player = document.getElementById("player")
+	new Audio('sfx/pipe.wav').play();
+	player.pipe = direction;
+	player.cutscene = true;
+	player.pipeDestination = level;
+	player.pipeDestination_part = part;
+	player.style.zIndex = 0;
+	player.count = 0;
+}
+
+function flagpole(a,b){
+	b.remove();
+	a.time = 0;
+	a.grounded = 1;
+	a.direction = 1;
+	document.getElementById("player").cutscene = true;
+	a.endstage = true;
+	a.velocityX = 0;
+	new Audio('sfx/flagpole.wav').play();
+}
+
+function kill(element){
+	element.hp = 0;
+	element.isDead = 1;
+	if (element.id != "player"){
+		element.remove();
+	}
+}
+
+function cutscenes(){
+	if (player.endstage == true){
+		endstage();
+	}
+	else if (player.pipe == "down"){
+		player.y = player.y + 0.8;
+		player.velocityX = 0;
+		update(player);
+		player.count = player.count + 1;
+		if (player.count == 200){
+			player.pipe = false;
+			cutscene = false;
+			load(player.pipeDestination,player.pipeDestination_part);
+		}
+	}
+	else if (player.pipe == "right"){
+		player.x = player.x + 0.8;
+		player.velocityX = 2;
+		update(player);
+		player.count = player.count + 1;
+		if (player.count == 200){
+			player.pipe = false;
+			cutscene = false;
+			load(player.pipeDestination,player.pipeDestination_part);
+		}
+	}
+	else if (player.intro == true){
+		physics();
+		player.velocityX = 2.5;
+	}
 }

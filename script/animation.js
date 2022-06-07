@@ -88,7 +88,8 @@ function goomba_animation(){
 			}
 			else if (elem.hh != true){
 				elem.animation = elem.animation + 1;
-				elem.setAttribute('name', '')
+				elem.setAttribute('name', '');
+				elem.classList.remove('entity');
 				elem.style.backgroundPositionY = 64 + "px";
 				if (elem.animation == 15){
 					elem.style.display = "none";
@@ -99,7 +100,8 @@ function goomba_animation(){
 				elem.y = elem.y + elem.velocityY;
 				elem.x = elem.x + elem.velocityX;
 				elem.velocityY = elem.velocityY + 1;
-				elem.setAttribute('name', '')
+				elem.setAttribute('name', '');
+				elem.classList.remove('entity');
 				elem.style.transform = "translate(" + elem.x + "px," + elem.y + "px) rotate(180deg)";
 				if (elem.y > window.innerHeight){
 					elem.remove();
@@ -212,13 +214,13 @@ function block_animation(){
 		if (block.hit == true){
 			block.style.backgroundPositionY = "64px";
 			if (block.animation == 0){
-				if (block.id == "c"){
+				if (block.inside == "c"){
 					new Audio('sfx/coin.wav').play();
 				}
-				if (block.id == "s"){
+				if (block.inside == "s"){
 					new Audio('sfx/powerup-appear.wav').play();
 				}
-				if (block.id == "u"){
+				if (block.inside == "u"){
 					console.log("1up");
 				}
 			}

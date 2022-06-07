@@ -1,4 +1,4 @@
-*{margin:0;position:absolute;image-rendering:pixelated;}
+*{margin:0;position:absolute;image-rendering:pixelated;image-rendering:crisp;}
 body{background:#9494FF;overflow:hidden;height:100vh;width:100vw}
 html{max-width:100vw;}
 h1{font-family: 'Press Start 2P', cursive;}
