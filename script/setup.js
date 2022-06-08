@@ -69,8 +69,15 @@ function setup(){
 		if (element.id == "player"){
 			element.w = 48;
 			if (typeof element.attributes.intro !== 'undefined'){
-				element.cutscene = true;
-				element.intro = true;
+				if(element.attributes.intro.value == "walk"){
+					element.cutscene = true;
+					element.intro = "walk";
+				}
+				if(element.attributes.intro.value == "pipe"){
+					element.cutscene = true;
+					element.count = 0;
+					element.intro = "pipe";
+				}
 			}
 		}
 	}

@@ -135,9 +135,14 @@ function cutscenes(){
 		}
 	}
 	else if (player.pipe == "right"){
-		player.x = player.x + 0.8;
-		player.velocityX = 2;
-		update(player);
+		if (player.count < 75){
+			player.velocityX = 2.5;
+			player.x = player.x + 0.8;
+			update(player);
+		}
+		else{
+			player.velocityX = 0;
+		}
 		player.count = player.count + 1;
 		if (player.count == 200){
 			player.pipe = false;
@@ -145,8 +150,23 @@ function cutscenes(){
 			load(player.pipeDestination,player.pipeDestination_part);
 		}
 	}
-	else if (player.intro == true){
+	else if (player.intro == "walk"){
 		physics();
 		player.velocityX = 2.5;
+	}
+	else if (player.intro == "pipe"){
+		if (player.count < 80){
+			player.y = player.y - 0.8;
+			player.animation = 0;
+			player.count += 1;
+			player.grounded = 1;
+			update(player);
+		}
+		else{
+			player.y = parseInt(player.y);
+			player.style.zIndex = 10;
+			player.intro = undefined;
+			player.cutscene = false;
+		}
 	}
 }

@@ -52,7 +52,9 @@ function load(level,pipe=0){
 		}
 		if (pipe == 1){
 			player.x = 163.5 * 64 + 16;
-			player.y = screenHeight - 128 - 192;
+			player.y = screenHeight - 256;
+			player.style.zIndex = 0;
+			player.setAttribute("intro","pipe");
 		}
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)"
 		document.body.style.background = "#9494FF";
@@ -198,7 +200,7 @@ function load(level,pipe=0){
 			player.x = 144;
 			player.y = screenHeight - 128 - 64;
 		}
-		player.setAttribute("intro","true");
+		player.setAttribute("intro","walk");
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "#9494FF";
 		setObject("background",0,screenHeight - 176*4 - 128,16 * 64);
@@ -273,7 +275,9 @@ function load(level,pipe=0){
 
 		const player = document.getElementById("player");
 		player.x = 240;
-		player.y = screenHeight - 256 - 64;
+		player.y = screenHeight - 256;
+		player.style.zIndex = 0;
+		player.setAttribute("intro","pipe");
 		player.style.transform = "translate(" + player.x + "px," + player.y + "px)";
 		document.body.style.background = "#9494FF";
 		setObject("background",-32 * 64,screenHeight - 176*4 - 128,(37 + 32) * 64);

@@ -103,7 +103,7 @@ function goomba_animation(){
 				elem.setAttribute('name', '');
 				elem.classList.remove('entity');
 				elem.style.transform = "translate(" + elem.x + "px," + elem.y + "px) rotate(180deg)";
-				if (elem.y > window.innerHeight){
+				if (elem.y > screenHeight){
 					elem.remove();
 				}
 			}
@@ -180,7 +180,7 @@ function koopa_animation(){
 				elem.x = elem.x + elem.velocityX;
 				elem.velocityY = elem.velocityY + 1;
 				elem.style.transform = "translate(" + elem.x + "px," + elem.y + "px) rotate(180deg)";
-				if (elem.y > window.innerHeight){
+				if (elem.y > screenHeight){
 					elem.remove();
 				}
 			}
