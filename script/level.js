@@ -32,7 +32,12 @@ function load(level,pipe=0){
 
 		setObject("groundcave",0,screenHeight - 128,16 * 64,128);
 		setObject("blockcave",0*64,screenHeight - 128 - 11*64,64,11*64);
+		setObject("blockcave",5*64,screenHeight - 128 - 8*64,64,64);
+		setObject("blockcave",6*64,screenHeight - 128 - 7*64,64,64);
 		setObject("qblockcave",7*64,screenHeight - 128 - 7*64,0,0,"s");
+		setObject("blockcave",8*64,screenHeight - 128 - 7*64,64,64);
+		setObject("blockcave",9*64,screenHeight - 128 - 8*64,64,64);
+		setObject("mushroom",7*64,screenHeight - 128 - 8*64);
 		setObject("blockcave",4*64,screenHeight - 128 - 3*64,7*64,3*64);
 		setObject("blockcave",4*64,screenHeight - 128 - 11*64,7*64,1*64);
 		setObject("lpipe",13*64,screenHeight - 128 - 2*64,3*64,2*64,"1-1","right",1);

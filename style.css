@@ -25,7 +25,7 @@ div[name="element"]{height:64px;width:64px;}
 .koopa{background:url(textures/entity/koopa.png);background-size:128px 384px;}
 .koopacave{background:url(textures/entity/ug/koopa.png);background-size:128px 384px;}
 
-.mushroom{background:url(textures/entity/mushroom.png);background-size:128px 384px;}
+.mushroom{background:url(textures/entity/mushroom.png);background-size:64px;}
 
 .block{background:url(textures/objects/block.png);background-size:64px;}
 .blockcave{background:url(textures/objects/ug/block.png);background-size:64px;}

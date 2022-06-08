@@ -60,11 +60,16 @@ function setup(){
 			element.isDead = false;
 			element.hp = 1;
 		}
-		if (element.classList.contains("goomba") || element.classList.contains("koopa")){
+		if (element.classList.contains("hostile")){
 			element.moving = 1;
 			element.velocityX = -1.5;
 			element.bounce = false;
 			element.bump = true;
+		}
+		if (element.classList.contains("mushroom")){
+			element.moving = 1;
+			element.velocityX = 2;
+			element.bounce = false;
 		}
 		if (element.id == "player"){
 			element.w = 48;

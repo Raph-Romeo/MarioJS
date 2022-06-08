@@ -49,7 +49,13 @@ function collision(a){
 					}
 				}
 				else if (b.hit == true){
-					kick(a);
+					if (a.classList.contains("hostile")){
+						kick(a);
+					}
+					else{
+						a.velocityY = -10;
+						a.velocityX = - a.velocityX;
+					}
 				}
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
@@ -100,7 +106,6 @@ function collision(a){
 			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
 				a.y = b.y - a.h;
 				ny = a.y;
-				a.grounded = 1;
 				if (b.bump){
 					if (b.shelled == true){
 						new Audio('sfx/kick.wav').play();
@@ -124,41 +129,45 @@ function collision(a){
 						a.velocityY = - a.velocityY/2;
 						a.grounded = 0;
 						if (b.isDead == false){
-							stomp(b)
+							stomp(b);
 						}
 					}
 				}
 				else{
-					a.velocityY = 0;
+					if (b.id=="player"){
+						if (a.classList.contains("hostile")){
+							hit_check(b,a);
+						}
+						else if(a.classList.contains("mushroom")){
+							powerup(b,a);
+						}
+					}
+					else if(a.id == "player"){
+						if (b.classList.contains("mushroom")){
+							powerup(a,b);
+						}
+					}
 				}
 			}
 			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
-
-				if ((a.id == "player" || b.id == "player")){
+				if (a.id == "player"){
 					if(b.classList.contains("hostile")){
-						var e = b;
+						hit_check(a,b);
 					}
 					else{
-						var e = a;
+						if(b.classList.contains("mushroom")){
+							powerup(a,b);
+						}
 					}
-					var player = document.getElementById("player");
-					if (e.shelled == true){
-						if (e.rolling == true){
-							hit(player)
-						}
-						else{
-							new Audio('sfx/kick.wav').play();
-							e.rolling = true;
-							if (player.x < e.x){
-								e.velocityX = 12;
-							}
-							if (player.x > e.x + e.w/2){
-								e.velocityX = -12;
-							}
-						}
+				}
+				else if (b.id == "player"){
+					if(a.classList.contains("hostile")){
+						hit_check(b,a);
 					}
 					else{
-						hit(player)
+						if(a.classList.contains("mushroom")){
+							powerup(b,a);
+						}
 					}
 				}
 				else if (a.rolling == true){
@@ -166,9 +175,8 @@ function collision(a){
 					kick(b);
 				}
 				else{
-					a.velocityX = - a.velocityX
+					a.velocityX = - a.velocityX;
 				}
-
 			}
 		}
 	}

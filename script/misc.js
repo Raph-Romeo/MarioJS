@@ -169,4 +169,60 @@ function cutscenes(){
 			player.cutscene = false;
 		}
 	}
+	else if (player.grow == true){
+		player.count += 1;
+		if (player.count > 50){
+			player.style.backgroundPositionY = "-128px";
+		}
+		if (player.count == 100){
+			player.style.backgroundPositionY = "-256px";
+		}
+		if (player.count == 150){
+			player.style.backgroundPositionY = "-384px";
+		}
+		if (player.count == 200){
+			player.style.backgroundPositionY = "-512px";
+		}
+		if (player.count == 250){
+			player.cutscene = false;
+			player.grow = false;
+		}
+	}
+}
+
+
+function hit_check(a,e){
+	if (e.shelled == true){
+		if (e.rolling == true){
+			hit(a)
+		}
+		else{
+			new Audio('sfx/kick.wav').play();
+			e.rolling = true;
+			if (a.x < e.x){
+				e.velocityX = 12;
+			}
+			if (a.x > e.x + e.w/2){
+				e.velocityX = -12;
+			}
+		}
+	}
+	else{
+		hit(a);
+	}
+}
+
+function powerup(a,b){
+	a.h = 128;
+	a.style.height = "128px";
+	a.y = a.y - 64;
+	a.style.background = "url(textures/player/mario_grow.png)";
+	a.style.backgroundSize = "64px 512px";
+	a.count = 0;
+	update(a);
+	a.tall = true;
+	new Audio('sfx/powerup.wav').play();
+	a.grow = true;
+	a.cutscene = true;
+	b.remove();
 }
