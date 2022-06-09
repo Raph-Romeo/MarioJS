@@ -30,152 +30,153 @@ function collision(a){
 	a.isPassenger = 0;
 	for (var i=0;i<elements.length; ++i){
 		var b = elements[i];
-		//ENTITY -> BLOCK
-		if (b.static){
-			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
-				a.y = b.y - a.h;
-				ny = a.y;
-				a.grounded = 1;
-				a.velocityY = 0;
-				if (a.id == "player"){
-					if (b.tunnel == true){
-						if (a.crouch == true){
-							if (a.x - 8 - b.x > 0 && b.x + b.w - a.x - a.w - 8 >0){
-								if (b.classList.contains("pipe")){
-									pipe(b.de,b.di,b.pa);
+		if ((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)){
+			//ENTITY -> BLOCK
+			if (b.static){
+				if((b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
+					a.y = b.y - a.h;
+					ny = a.y;
+					a.grounded = 1;
+					a.velocityY = 0;
+					if (a.id == "player"){
+						if (b.tunnel == true){
+							if (a.crouch == true){
+								if (a.x - 8 - b.x > 0 && b.x + b.w - a.x - a.w - 8 >0){
+									if (b.classList.contains("pipe")){
+										pipe(b.de,b.di,b.pa);
+									}
 								}
 							}
 						}
 					}
-				}
-				else if (b.hit == true){
-					if (a.classList.contains("hostile")){
-						kick(a);
-					}
-					else{
-						a.velocityY = -10;
-						a.velocityX = - a.velocityX;
-					}
-				}
-			}
-			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
-
-				if (a.id == "player"){
-					if (b.classList.contains('pole_collision')){
-						flagpole(a,b);
-					}
-					if (b.classList.contains("lpipe")){
-						if (b.tunnel == true){
-							if (a.grounded == 1){
-								pipe(b.de,b.di,b.pa);
-							}
-						}
-					}
-				}
-
-				if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
-					if (b.classList.contains("block") || b.classList.contains("qblock")){
-						if (b.animation != -1){
-							b.hit = true;
-						}
-					}
-					a.velocityY = -0.1;
-					ny = b.y + b.h;
-				}
-				else if((a.y-a.velocityY+a.h-b.y>0)&&(b.y+b.h-a.y-a.velocityY>0)){
-					if (a.x < b.x){
-						a.x = b.x - a.w;
-					}
-					else if(a.x > b.x){
-						a.x = b.x + b.w;
-					}
-					if (a.bounce){
-						a.velocityX = 0;
-					}
-					else{
-						if (a.rolling == true){
-							new Audio('sfx/bump.wav').play();
-						}
-						a.velocityX = - a.velocityX;
-					}
-				}
-			}
-		}
-		//ENTITY -> ENTITY
-		else if (a != b){
-			if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
-				a.y = b.y - a.h;
-				ny = a.y;
-				if (b.bump){
-					if (b.shelled == true){
-						new Audio('sfx/kick.wav').play();
-						a.velocityY = - a.velocityY/2;
-						a.grounded = 0;
-						if (b.rolling == true){
-							b.velocityX = 0;
-							b.rolling = false;
+					else if (b.hit == true){
+						if (a.classList.contains("hostile")){
+							kick(a);
 						}
 						else{
-							b.rolling = true;
-							if (a.x < b.x + b.w/2){
-								b.velocityX = 12;
-							}
-							else if (a.x > b.x + b.w/2){
-								b.velocityX = -12;
-							}
-						}
-					}
-					else{
-						a.velocityY = - a.velocityY/2;
-						a.grounded = 0;
-						if (b.isDead == false){
-							stomp(b);
+							a.velocityY = -10;
+							a.velocityX = - a.velocityX;
 						}
 					}
 				}
-				else{
-					if (b.id=="player"){
-						if (a.classList.contains("hostile")){
-							hit_check(b,a);
+				else if((a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
+					if (a.id == "player"){
+						if (b.classList.contains('pole_collision')){
+							flagpole(a,b);
 						}
-						else if(a.classList.contains("mushroom")){
-							powerup(b,a);
+						if (b.classList.contains("lpipe")){
+							if (b.tunnel == true){
+								if (a.grounded == 1){
+									pipe(b.de,b.di,b.pa);
+								}
+							}
 						}
+					}	
+
+					if ((a.py>=b.y+b.h)&&(a.velocityY<0)){
+						if (b.classList.contains("block") || b.classList.contains("qblock")){
+							if (b.animation != -1){
+								b.hit = true;
+							}
+						}
+						a.velocityY = -0.1;
+						ny = b.y + b.h;
 					}
-					else if(a.id == "player"){
-						if (b.classList.contains("mushroom")){
-							powerup(a,b);
+					else if((a.y-a.velocityY+a.h-b.y>0)&&(b.y+b.h-a.y-a.velocityY>0)){
+						if (a.x < b.x){
+							a.x = b.x - a.w;
+						}
+						else if(a.x > b.x){
+							a.x = b.x + b.w;
+						}
+						if (a.bounce){
+							a.velocityX = 0;
+						}
+						else{
+							if (a.rolling == true){
+								new Audio('sfx/bump.wav').play();
+							}
+							a.velocityX = - a.velocityX;
 						}
 					}
 				}
 			}
-			else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
-				if (a.id == "player"){
-					if(b.classList.contains("hostile")){
-						hit_check(a,b);
+			//ENTITY -> ENTITY
+			else if (a != b){
+				if((b.y==a.y+a.h||b.y<=a.y+a.h)&&(b.y+a.velocityY>=a.y+a.h)&&(a.velocityY>=0)){
+					a.y = b.y - a.h;
+					ny = a.y;
+					if (b.bump){
+						if (b.shelled == true){
+							new Audio('sfx/kick.wav').play();
+							a.velocityY = - a.velocityY/2;
+							a.grounded = 0;
+							if (b.rolling == true){
+								b.velocityX = 0;
+								b.rolling = false;
+							}
+							else{
+								b.rolling = true;
+								if (a.x < b.x + b.w/2){
+									b.velocityX = 12;
+								}
+								else if (a.x > b.x + b.w/2){
+									b.velocityX = -12;
+								}
+							}
+						}
+						else{
+							a.velocityY = - a.velocityY/2;
+							a.grounded = 0;
+							if (b.isDead == false){
+								stomp(b);
+							}
+						}
 					}
 					else{
-						if(b.classList.contains("mushroom")){
-							powerup(a,b);
+						if (b.id=="player"){
+							if (a.classList.contains("hostile")){
+								hit_check(b,a);
+							}
+							else if(a.classList.contains("mushroom")){
+								powerup(b,a);
+							}
+						}
+						else if(a.id == "player"){
+							if (b.classList.contains("mushroom")){
+								powerup(a,b);
+							}
 						}
 					}
 				}
-				else if (b.id == "player"){
-					if(a.classList.contains("hostile")){
-						hit_check(b,a);
-					}
-					else{
-						if(a.classList.contains("mushroom")){
-							powerup(b,a);
+				else if((a.x+a.w-b.x>0)&&(b.x+b.w-a.x>0)&&(a.y+a.h-b.y>0)&&(b.y+b.h-a.y>0)){
+					if (a.id == "player"){
+						if(b.classList.contains("hostile")){
+							hit_check(a,b);
+						}
+						else{
+							if(b.classList.contains("mushroom")){
+								powerup(a,b);
+						}
 						}
 					}
-				}
-				else if (a.rolling == true){
-					new Audio('sfx/kick.wav').play();
-					kick(b);
-				}
-				else{
-					a.velocityX = - a.velocityX;
+					else if (b.id == "player"){
+						if(a.classList.contains("hostile")){
+							hit_check(b,a);
+						}
+						else{
+							if(a.classList.contains("mushroom")){
+								powerup(b,a);
+							}
+						}
+					}
+					else if (a.rolling == true){
+						new Audio('sfx/kick.wav').play();
+						kick(b);
+					}
+					else{
+						a.velocityX = - a.velocityX;
+					}
 				}
 			}
 		}
